@@ -1,5 +1,11 @@
+import os
 import pygame
 import random
+
+
+# Determine the base path to use for asset loading
+base_path = os.path.dirname(__file__)  # Gets the directory where the script is located
+asset_path = os.path.join(base_path, 'assets')
 
 # Initialize Pygame
 pygame.init()
@@ -11,7 +17,7 @@ screen = pygame.display.set_mode((screen_width, screen_height))
 
 
 # Background image
-background_image = pygame.image.load("./assets/stars-bg.png").convert()
+background_image = pygame.image.load(os.path.join(asset_path, "stars-bg.png")).convert()
 background_image = pygame.transform.scale(
     background_image, (screen_width, screen_height)
 )  # Scale it to your screen size
@@ -36,7 +42,7 @@ health = 3
 
 # Spaceship spritesheet
 spaceship_spritesheet_image = pygame.image.load(
-    "./assets/spaceship.png"
+    os.path.join(asset_path, "spaceship.png")
 ).convert_alpha()  # Use the correct path to your spritesheet file
 # Assuming there are 3 frames in the spritesheet
 spaceship_frame_width = spaceship_spritesheet_image.get_width() // 5
@@ -59,7 +65,7 @@ spaceship_frames = [
 
 # Load the bullet spritesheet
 bullet_spritesheet_image = pygame.image.load(
-    "./assets/bullet.png"
+    os.path.join(asset_path, "bullet.png")
 ).convert_alpha()  # Make sure to provide the correct path to the image file
 # Assume there are 4 frames in the spritesheet
 bullet_frame_width = bullet_spritesheet_image.get_width() // 3
@@ -77,8 +83,8 @@ bullet_frames = [
 ]
 
 # Load enemy spritesheets
-enemy_flyer_spritesheet = pygame.image.load("./assets/enemy-flyer.png").convert_alpha()
-enemy_seeker_spritesheet = pygame.image.load("./assets/enemy-seeker.png").convert_alpha()
+enemy_flyer_spritesheet = pygame.image.load(os.path.join(asset_path, "enemy-flyer.png")).convert_alpha()
+enemy_seeker_spritesheet = pygame.image.load(os.path.join(asset_path, "enemy-seeker.png")).convert_alpha()
 # Assuming there are multiple frames for each enemy type in the spritesheet
 # Calculate the frame width for each spritesheet based on your known number of frames
 flyer_frame_width = (
@@ -116,7 +122,7 @@ enemy_seeker_frames = [
 ]
 
 # Load the explosion spritesheet
-explosion_spritesheet = pygame.image.load("./assets/explosion.png").convert_alpha()
+explosion_spritesheet = pygame.image.load(os.path.join(asset_path, "explosion.png")).convert_alpha()
 # Assuming the spritesheet is a grid of equal-sized frames
 explosion_frames = []
 explosion_frame_width = explosion_spritesheet.get_width() // 6
@@ -134,16 +140,16 @@ for row in range(6):
         explosion_frames.append(frame)
 
 # Load game over and win message images
-game_over_image = pygame.image.load("./assets/message-lose.png").convert_alpha()
+game_over_image = pygame.image.load(os.path.join(asset_path, "message-lose.png")).convert_alpha()
 game_over_image_rect = game_over_image.get_rect(
     center=(screen_width // 2, screen_height // 2)
 )
-win_image = pygame.image.load("./assets/message-win.png").convert_alpha()
+win_image = pygame.image.load(os.path.join(asset_path, "message-win.png")).convert_alpha()
 win_image_rect = win_image.get_rect(center=(screen_width // 2, screen_height // 2))
 
 # Load the final round message image
 final_round_image = pygame.image.load(
-    "./assets/final-round.png"
+    os.path.join(asset_path, "final-round.png")
 ).convert_alpha()  # Adjust path as needed
 final_round_image_rect = final_round_image.get_rect(
     center=(screen_width // 2, screen_height // 2)
@@ -160,17 +166,17 @@ game_state = GAME_ACTIVE
 
 # Load sounds
 explosion_sound = pygame.mixer.Sound(
-    "./assets/explosion_sound.mp3"
+    os.path.join(asset_path, "explosion_sound.mp3")
 )  # Replace with the path to your explosion sound
 game_win_sound = pygame.mixer.Sound(
-    "./assets/game_win_sound.mp3"
+    os.path.join(asset_path, "game_win_sound.mp3")
 )  # Replace with the path to your win sound
 game_lose_sound = pygame.mixer.Sound(
-    "./assets/game_lose_sound.mp3"
+    os.path.join(asset_path, "game_lose_sound.mp3")
 )  # Replace with the path to your lose sound
 # Load and play background music
 pygame.mixer.music.load(
-    "./assets/background_music.mp3"
+    os.path.join(asset_path, "background_music.mp3")
 )  # Replace with the path to your background music
 pygame.mixer.music.play(loops=-1)  # Play music continuously
 

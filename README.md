@@ -80,6 +80,19 @@ python space_avenger.py
 
 Replace `space_avenger.py` with the path to your main game script.
 
+## Installing via PIP
+You can also install the game via pip!
+
+``` bash
+pip install space_avenger==0.1.4
+```
+
+### running the game
+
+``` bash
+space_avenger
+```
+
 ## Controls
 
 - **Arrow Keys**: Move the spaceship left and right.

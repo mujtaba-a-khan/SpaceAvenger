@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="space_avenger",
-    version="0.1.0",
+    version="0.1.4",
     packages=find_packages(where="src"),
     package_dir={"": "src"},
     include_package_data=True,
@@ -11,11 +11,11 @@ setup(
     ],
     entry_points={
         'console_scripts': [
-            'space_avenger=space_avenger.main:main',  # Adjust the path as needed
+            'space_avenger=space_avenger.main:main',
         ],
     },
     package_data={
-        'space_avenger': ['assets/*'],  # Ensure all your game assets are included
+        'space_avenger': ['assets/*.*'],  # Assuming assets are directly in the assets folder
     },
     classifiers=[
         "Programming Language :: Python :: 3",
